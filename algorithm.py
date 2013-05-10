@@ -84,7 +84,7 @@ def main():
     print '-------------------'
     print '--------- NOT ANON ----------'
     for v in tb:
-        diff = diff_team(v[1],tb[0][1])
+        diff = diffTeam(v[1],tb[0][1])
         print '##############################'
         print '----- TEAM 1'
         print unanonymize(v[1])
@@ -99,7 +99,16 @@ def main():
     # write to output file
     pickle.dump(tb,open(RESULTS_FILE,'w'))
     
-
+def diffTeam(t1,t2):
+    notInT2 = list(t1[:])
+    notInT1 = list(t2[:])
+    
+    for elem in t1:
+        if elem in notInT1:
+            del notInT1[notInT1.index(elem)]
+            del notInT2[notInT2.index(elem)]
+            
+    return (notInT1, notInT2)
 
 # given a team, extract the other one (i.e. everybody not in the first team)
 def restOfTheGroup(team1,graph):
