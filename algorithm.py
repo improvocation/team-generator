@@ -178,7 +178,7 @@ def compareContents(graph):
 # load the ID <-> name mapping
 def getMap(id_as_key=False):
     mapval = {}
-    mapFile = open('mapping.csv','r')
+    mapFile = open('mapping-src.csv','r')
     
     for line in mapFile:
         name, id = line.strip().split(', ')
